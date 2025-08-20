@@ -71,6 +71,18 @@
   }
   </script>
 
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+  
   <style>
     /* fallback font rendering */
     html { font-feature-settings: "cv02", "cv03", "cv04", "cv11"; }
