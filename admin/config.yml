@@ -1,1 +1,23 @@
+# Konfigurasi backend untuk otentikasi dengan GitHub
+backend:
+  name: github
+  repo: Farhanfauziandi/desadecap # Ganti dengan username/repo Anda
+  branch: main # Ganti dengan nama branch utama Anda (misal: main atau master)
 
+# Lokasi di mana file media (seperti gambar) akan disimpan
+media_folder: "assets/images" # Contoh: folder untuk menyimpan gambar
+public_folder: "/assets/images" # Path publik untuk mengakses gambar tersebut
+
+# Mendefinisikan 'Collections' atau tipe konten yang bisa diedit
+collections:
+  - name: "blog" # Nama koleksi (misalnya: untuk postingan blog)
+    label: "Blog" # Label yang muncul di antarmuka CMS
+    folder: "_posts" # Folder tempat menyimpan file postingan
+    create: true # Izinkan pembuatan file baru
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Format nama file
+    fields: # Mendefinisikan field untuk setiap postingan
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Tanggal Terbit", name: "date", widget: "datetime"}
+      - {label: "Gambar Unggulan", name: "thumbnail", widget: "image", required: false}
+      - {label: "Isi Konten", name: "body", widget: "markdown"}
